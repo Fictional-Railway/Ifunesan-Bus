@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const statuses = [
         { text: "平常通り", color: "#28a745" },
         { text: "平常通り", color: "#28a745" },
-        { text: "一部路線で遅延あり", color: "#ffc107" }
     ];
 
     setInterval(() => {
