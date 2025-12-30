@@ -25,16 +25,17 @@ body {
     padding: 0 20px;
 }
 
-/* ヘッダー */
+/* ヘッダー：画面上部に固定 */
 .main-header {
     background: #fff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    z-index: 1000;
+    z-index: 2000; /* 全体の中でも高い数値に */
     height: 70px;
-    display: flex;
-    align-items: center;
-    position: sticky;
+    position: sticky; /* 固定 */
     top: 0;
+    display: flex;
+    flex-direction: column; /* メニューを下方向に展開するため */
+    justify-content: center;
 }
 
 .main-header a {
@@ -59,11 +60,6 @@ body {
     font-size: 20px;
     font-weight: bold;
     color: var(--primary);
-}
-
-.ruby {
-    font-size: 11px;
-    color: #777;
 }
 
 .bus-brand {
@@ -95,16 +91,16 @@ body {
     border-radius: 4px;
 }
 
-/* ハンバーガーボタン（スマホ用） */
+/* ハンバーガーボタン */
 .menu-trigger {
-    display: none; /* 最初は非表示 */
+    display: none;
     width: 30px;
     height: 24px;
     position: relative;
     background: none;
     border: none;
     cursor: pointer;
-    z-index: 3000; /* メニュー(2000)より手前に配置 */
+    z-index: 3000;
 }
 
 .menu-trigger span {
@@ -121,83 +117,52 @@ body {
 .menu-trigger span:nth-child(2) { top: 10px; }
 .menu-trigger span:nth-child(3) { top: 20px; }
 
-/* ×に変わる時のアニメーション */
-.menu-trigger.active span:nth-child(1) {
-    transform: translateY(10px) rotate(-45deg);
-}
+.menu-trigger.active span:nth-child(1) { transform: translateY(10px) rotate(-45deg); }
+.menu-trigger.active span:nth-child(2) { opacity: 0; }
+.menu-trigger.active span:nth-child(3) { transform: translateY(-10px) rotate(45deg); }
 
-.menu-trigger.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-trigger.active span:nth-child(3) {
-    transform: translateY(-10px) rotate(45deg);
-}
-
-/* --- 前半の共通設定やヘッダーなどはそのまま --- */
-
-/* モバイルメニュー本体（上から降ってくるスタイルに変更） */
+/* モバイルメニュー（上から降ってくる） */
 .mobile-nav {
-    position: absolute; /* fixedから変更：下のスクロールに連動させるため */
-    top: 70px;         /* ヘッダーの高さ分下げる */
+    position: absolute;
+    top: 70px;
     left: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.98); /* 少しだけ透けさせる */
-    z-index: 2000;
-    padding: 20px 30px;
-    
-    /* アニメーション：上から下にスライド & 透明度 */
-    transform: translateY(-20px);
+    background: #fff; /* 透けすぎないように白を濃く */
+    z-index: 1900;
+    padding: 10px 30px 20px;
+    transform: translateY(-120%); /* 完全に隠す */
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease-out;
+    transition: all 0.4s ease-in-out;
     box-shadow: 0 10px 15px rgba(0,0,0,0.1);
 }
 
-/* メニューが開いたとき */
 .mobile-nav.open {
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
 }
 
-.mobile-nav ul {
-    list-style: none;
-}
+.mobile-nav ul { list-style: none; }
+.mobile-nav li { padding: 15px 0; border-bottom: 1px solid #eee; }
+.mobile-nav a { text-decoration: none; font-weight: bold; color: var(--primary); font-size: 16px; display: block; }
 
-.mobile-nav li {
-    padding: 15px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.mobile-nav a {
-    text-decoration: none;
-    font-weight: bold;
-    color: var(--primary);
-    font-size: 16px;
-    display: block;
-}
-
-/* オーバーレイ（薄くして、クリックで閉じる機能だけ残す） */
+/* オーバーレイ */
 .overlay {
     position: fixed;
-    top: 70px; /* ヘッダーより下 */
+    top: 70px;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.2); /* さらに薄く */
+    background: rgba(0,0,0,0.3);
     z-index: 1500;
     display: none;
-    backdrop-filter: blur(2px); /* 背景を少しぼかすとおしゃれ */
+    backdrop-filter: blur(2px);
 }
 
-.overlay.show {
-    display: block;
-}
+.overlay.show { display: block; }
 
-/* --- 残りのニュースや採用情報のCSSはそのまま --- */
-
-/* ヒーローセクション */
+/* ヒーロー */
 .hero {
     height: 350px;
     background: url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80') center/cover;
@@ -211,10 +176,7 @@ body {
     color: #fff;
 }
 
-.hero-text h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
+.hero-text h2 { font-size: 2rem; margin-bottom: 10px; }
 
 .status-badge {
     background: #fff;
@@ -235,274 +197,69 @@ body {
 }
 
 /* クイックアクション */
-.quick-action {
-    padding: 20px 0;
-    background: var(--light-bg);
-}
-
-.action-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-}
-
-.action-btn {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    text-align: center;
-    padding: 15px 5px;
-    text-decoration: none;
-    color: #333;
-}
-
-.action-btn .icon {
-    display: block;
-    font-size: 24px;
-    margin-bottom: 5px;
-}
+.quick-action { padding: 20px 0; background: var(--light-bg); }
+.action-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.action-btn { background: #fff; border: 1px solid #ddd; border-radius: 8px; text-align: center; padding: 15px 5px; text-decoration: none; color: #333; }
+.action-btn .icon { display: block; font-size: 24px; margin-bottom: 5px; }
 
 /* サービス紹介 */
-.service-intro {
-    margin: 40px auto;
-}
-
-.service-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.service-card {
-    padding: 25px;
-    border-radius: 10px;
-    color: #fff;
-}
-
+.service-intro { margin: 40px auto; }
+.service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.service-card { padding: 25px; border-radius: 10px; color: #fff; }
 .service-card.blue { background: var(--primary); }
 .service-card.green { background: var(--green); }
 .service-card.orange { background: #d97706; }
+.service-card h4 { margin-bottom: 10px; font-size: 1.2rem; }
+.service-card p { font-size: 14px; opacity: 0.9; }
 
-.service-card h4 {
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-}
-
-.service-card p {
-    font-size: 14px;
-    opacity: 0.9;
-}
-
-/* メインコンテンツレイアウト */
-.layout-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 40px;
-    margin-bottom: 50px;
-}
-
-.section-title {
-    border-left: 5px solid var(--primary);
-    padding-left: 10px;
-    margin: 30px 0 20px;
-}
+/* レイアウト */
+.layout-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; margin-bottom: 50px; }
+.section-title { border-left: 5px solid var(--primary); padding-left: 10px; margin: 30px 0 20px; }
 
 /* お知らせ */
-.news-list {
-    list-style: none;
-}
-
-.news-list li {
-    border-bottom: 1px solid #eee;
-    padding: 15px 0;
-}
-
-.news-list a {
-    text-decoration: none;
-    color: #333;
-    display: flex;
-    align-items: center;
-}
-
-.cat-label {
-    background: var(--primary);
-    color: #fff;
-    font-size: 11px;
-    padding: 2px 6px;
-    margin: 0 10px;
-    border-radius: 3px;
-}
-
+.news-list { list-style: none; }
+.news-list li { border-bottom: 1px solid #eee; padding: 15px 0; }
+.news-list a { text-decoration: none; color: #333; display: flex; align-items: center; }
+.cat-label { background: var(--primary); color: #fff; font-size: 11px; padding: 2px 6px; margin: 0 10px; border-radius: 3px; }
 .cat-label.info { background: #666; }
 
 /* 観光案内 */
-.sight-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.img-placeholder {
-    background: #ddd;
-    height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 40px;
-    border-radius: 8px;
-}
-
-.sight-item h5 {
-    margin-top: 10px;
-    font-size: 16px;
-}
-
-.sight-item p {
-    font-size: 13px;
-    color: #666;
-}
+.sight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.img-placeholder { background: #ddd; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 40px; border-radius: 8px; }
+.sight-item h5 { margin-top: 10px; font-size: 16px; }
+.sight-item p { font-size: 13px; color: #666; }
 
 /* ICカード */
-.ic-card-promo {
-    background: linear-gradient(135deg, #0056b3, #00c6ff);
-    color: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    margin-top: 40px;
-}
+.ic-card-promo { background: linear-gradient(135deg, #0056b3, #00c6ff); color: #fff; padding: 30px; border-radius: 12px; margin-top: 40px; }
+.ic-inner { display: flex; align-items: center; gap: 20px; }
+.btn-white { display: inline-block; background: #fff; color: var(--primary); text-decoration: none; padding: 8px 20px; border-radius: 50px; font-weight: bold; margin-top: 15px; }
 
-.ic-inner {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
+/* サイドバー */
+.recruit-flex-container { display: flex; flex-direction: column; gap: 20px; }
+.recruit-card { background: var(--primary); color: #fff; padding: 25px; border-radius: 12px; flex: 1; display: flex; flex-direction: column; }
+.contact-card { background: #f0f4f8; color: #333; border: 1px solid #ddd; }
+.small-text { font-size: 13px; margin-bottom: 10px; }
+.btn-more { display: block; background: var(--accent); color: #fff; text-align: center; text-decoration: none; padding: 10px; border-radius: 4px; font-weight: bold; margin-top: auto; }
+.app-promo-box { background: #334155; color: #fff; padding: 25px; border-radius: 12px; margin-top: 20px; text-align: center; }
+.app-btns { display: flex; gap: 10px; justify-content: center; margin-top: 15px; }
+.mock-app-btn { background: #000; padding: 5px 10px; border-radius: 5px; font-size: 10px; cursor: pointer; }
 
-.btn-white {
-    display: inline-block;
-    background: #fff;
-    color: var(--primary);
-    text-decoration: none;
-    padding: 8px 20px;
-    border-radius: 50px;
-    font-weight: bold;
-    margin-top: 15px;
-}
-
-/* サイドバー採用情報 */
-.recruit-flex-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.recruit-card {
-    background: var(--primary);
-    color: #fff;
-    padding: 25px;
-    border-radius: 12px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.contact-card {
-    background: #f0f4f8;
-    color: #333;
-    border: 1px solid #ddd;
-}
-
-.small-text {
-    font-size: 13px;
-    margin-bottom: 10px;
-}
-
-.btn-more {
-    display: block;
-    background: var(--accent);
-    color: #fff;
-    text-align: center;
-    text-decoration: none;
-    padding: 10px;
-    border-radius: 4px;
-    font-weight: bold;
-    margin-top: auto;
-}
-
-.app-promo-box {
-    background: #334155;
-    color: #fff;
-    padding: 25px;
-    border-radius: 12px;
-    margin-top: 20px;
-    text-align: center;
-}
-
-.app-btns {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin-top: 15px;
-}
-
-.mock-app-btn {
-    background: #000;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 10px;
-    cursor: pointer;
-}
-
-/* レスポンシブ設定（スマホ） */
+/* レスポンシブ */
 @media (max-width: 768px) {
-    /* ナビの切り替え */
     .pc-nav { display: none; }
-    .menu-trigger { display: block; } /* ハンバーガー表示 */
-
-    /* レイアウト調整 */
+    .menu-trigger { display: block; }
     .service-grid { grid-template-columns: 1fr; }
     .layout-grid { grid-template-columns: 1fr; }
     .action-grid { grid-template-columns: repeat(2, 1fr); }
     .recruit-flex-container { flex-direction: row; gap: 10px; }
     .recruit-card { padding: 15px; min-height: 180px; }
-    .recruit-card h3 { font-size: 15px; }
-    .small-text { font-size: 11px; }
-    .btn-more { font-size: 12px; }
     .ic-inner { flex-direction: column; text-align: center; }
     .sight-grid { grid-template-columns: 1fr; }
 }
 
 /* フッター */
-.site-footer {
-    background: #222;
-    color: #fff;
-    padding: 40px 0 20px;
-    margin-top: 50px;
-}
-
-.footer-links-grid {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #444;
-    padding-bottom: 30px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.footer-nav-bottom ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.footer-nav-bottom a {
-    color: #aaa;
-    text-decoration: none;
-    font-size: 13px;
-}
-
-.footer-copy {
-    text-align: center;
-    font-size: 11px;
-    color: #777;
-}
+.site-footer { background: #222; color: #fff; padding: 40px 0 20px; margin-top: 50px; }
+.footer-links-grid { display: flex; justify-content: space-between; border-bottom: 1px solid #444; padding-bottom: 30px; margin-bottom: 20px; flex-wrap: wrap; gap: 20px; }
+.footer-nav-bottom ul { list-style: none; display: flex; gap: 20px; }
+.footer-nav-bottom a { color: #aaa; text-decoration: none; font-size: 13px; }
+.footer-copy { text-align: center; font-size: 11px; color: #777; padding-bottom: 10px; }
