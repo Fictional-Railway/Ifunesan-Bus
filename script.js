@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         statusBox.innerHTML = `<span class="dot" style="background-color: ${s.color}"></span> 運行状況：${s.text}`;
     }, 10000); // 10秒ごとにランダムで状況変化
 
-    console.log("いふねさん交通：モバイル対応システム 起動");
+    console.log("伊舟山交通：モバイル対応システム 起動");
 });
 
 document.addEventListener('DOMContentLoaded', () => {
