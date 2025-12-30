@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>いふねさんナビ</title>
+    <link rel="stylesheet" href="nav-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="app-header">
+        <h1>いふねさんナビ</h1>
+        <div class="live-indicator">
+            <span class="pulse"></span> LIVE
+        </div>
+    </header>
+
+    <main class="app-main">
+        <div class="search-container">
+            <input type="text" placeholder="停留所名・行き先を入力" class="search-input">
+        </div>
+
+        <section class="map-view">
+            <div class="map-placeholder">
+                <div class="bus-icon" id="bus1">🚌</div>
+                <div class="bus-icon" id="bus2">🚌</div>
+                <p class="map-label">伊舟山駅周辺を表示中</p>
+            </div>
+        </section>
+
+        <section class="arrival-list">
+            <h2 class="list-title">付近のバス接近情報</h2>
+            
+            <div class="bus-card">
+                <div class="bus-info">
+                    <span class="line-badge beach">海岸通り線</span>
+                    <span class="destination">伊舟山海岸 行</span>
+                </div>
+                <div class="arrival-status">
+                    <p class="time">あと <strong class="highlight">3</strong> 分</p>
+                    <p class="station">1つ前のバス停を通過</p>
+                </div>
+            </div>
+
+            <div class="bus-card">
+                <div class="bus-info">
+                    <span class="line-badge mountain">大社線</span>
+                    <span class="destination">伊舟山大社 行</span>
+                </div>
+                <div class="arrival-status">
+                    <p class="time">あと <strong class="highlight">12</strong> 分</p>
+                    <p class="station">3つ前のバス停を発車</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item active">
+            <span class="icon">📍</span>
+            <span class="label">位置情報</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="icon">📅</span>
+            <span class="label">時刻表</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="icon">⭐</span>
+            <span class="label">お気に入り</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="icon">⚙️</span>
+            <span class="label">設定</span>
+        </a>
+    </nav>
+
+    <script src="nav-script.js"></script>
+</body>
+</html>

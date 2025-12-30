@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伊舟山（いふねさん）交通株式会社 - 公式サイト</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container header-inner">
+            <div class="logo">
+                <a href="#">
+                    <div class="logo-flex">
+                        <span class="corp-name">伊舟山交通</span>
+                        <span class="ruby">いふねさんこうつう</span>
+                    </div>
+                    <span class="bus-brand">IFUNESAN KOTSU BUS</span>
+                </a>
+            </div>
+            <nav class="pc-nav">
+                <ul>
+                    <li><a href="#timetable">時刻表・運賃</a></li>
+                    <li><a href="#line-map">路線図</a></li>
+                    <li><a href="#recruit" class="recruit-link">採用情報</a></li>
+                </ul>
+            </nav>
+            <button class="menu-trigger" id="menu-trigger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobile-nav">
+        <ul>
+            <li><a href="#timetable">時刻表・運賃</a></li>
+            <li><a href="#line-map">路線図</a></li>
+            <li><a href="#sightseeing">観光案内</a></li>
+            <li><a href="#recruit">採用情報</a></li>
+            <li><a href="#contact">お問い合わせ</a></li>
+        </ul>
+    </nav>
+    <div class="overlay" id="overlay"></div>
+
+    <section class="hero">
+        <div class="hero-overlay">
+            <div class="container">
+                <div class="hero-text">
+                    <p class="hero-sub">若狭の景色を、次の世代へ。</p>
+                    <h2>伊舟山交通と、<br>新しい明日へ。</h2>
+                    <div class="status-badge" id="bus-status">
+                        <span class="dot"></span> 運行状況：平常通り
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quick-action">
+        <div class="container action-grid">
+            <a href="#" class="action-btn">
+                <i class="icon">📅</i><span>時刻表</span>
+            </a>
+            <a href="#" class="action-btn">
+                <i class="icon">🗺️</i><span>路線図</span>
+            </a>
+            <a href="#" class="action-btn">
+                <i class="icon">🚌</i><span>接近情報</span>
+            </a>
+            <a href="#" class="action-btn">
+                <i class="icon">💳</i><span>運賃</span>
+            </a>
+        </div>
+    </section>
+
+    <section class="container service-intro">
+        <div class="service-grid">
+            <div class="service-card blue">
+                <h4>路線バス</h4>
+                <p>伊舟市街地から郊外まで、暮らしを支える全24路線を運行。</p>
+            </div>
+            <div class="service-card green">
+                <h4>高速バス</h4>
+                <p>大阪・京都・名古屋へ毎日運行。快適な高速旅を提供します。</p>
+            </div>
+            <div class="service-card orange">
+                <h4>観光バス</h4>
+                <p>若狭の名所を巡る貸切観光バス。グループ旅行に最適です。</p>
+            </div>
+        </div>
+    </section>
+
+    <main class="container main-content">
+        <div class="layout-grid">
+            <div class="main-column">
+                <article class="news-area">
+                    <h3 class="section-title">お知らせ</h3>
+                    <ul class="news-list">
+                        <li>
+                            <time datetime="2025-12-30">2025.12.30</time>
+                            <span class="cat-label">重要</span>
+                            <a href="#">年末年始のダイヤ変更について</a>
+                        </li>
+                        <li>
+                            <time datetime="2025-12-15">2025.10.05</time>
+                            <span class="cat-label info">案内</span>
+                            <a href="#">交通ICカード「Misaca」導入のお知らせ</a>
+                        </li>
+                        <li>
+                            <time datetime="2025-11-20">2025.06.20</time>
+                            <span class="cat-label info">イベント</span>
+                            <a href="#">「伊舟山バス感謝祭2025」開催報告</a>
+                        </li>
+                    </ul>
+                </article>
+
+                <section class="sightseeing-area" id="sightseeing">
+                    <h3 class="section-title">伊舟周辺を散策</h3>
+                    <div class="sight-grid">
+                        <div class="sight-item">
+                            <div class="img-placeholder">🌅</div>
+                            <h5>伊舟海岸</h5>
+                            <p>若狭海岸鉄道「伊舟駅」で下車、徒歩5分。絶景の朝日が楽しめます。</p>
+                        </div>
+                        <div class="sight-item">
+                            <div class="img-placeholder">⛩️</div>
+                            <h5>伊舟山大社</h5>
+                            <p>「大社前」バス停から徒歩3分。歴史ある縁結びの神様です。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="ic-card-promo">
+                    <div class="ic-inner">
+                        <div class="ic-text">
+                            <h4><img src="./image/Misaca文字2.png" width="50px" alt="">カードで、もっとスムーズに。</h4>
+                            <p>小銭いらずでスマートに乗降。チャージでポイントも貯まります。</p>
+                            <a href="#" class="btn-white">詳しく見る</a>
+                        </div>
+                        <img src="./image/Misaca.png" width="200px" alt="Misaca ICカードのイメージ画像" style="transform: rotate(-7deg); /* 20度回転 */">
+                    </div>
+                </section>
+            </div>
+
+            <aside class="recruit-side">
+                <div class="recruit-flex-container">
+                    <div class="recruit-card">
+                        <h3>運転手募集中</h3>
+                        <p class="small-text">心にしまった夢、もう一度かなえてみませんか？</p>
+                        <p class="small-text">伊舟山交通では運転手を募集しています。</p>
+                        <a href="#" class="btn-more">詳細を見る</a>
+                    </div>
+                    
+                    <div class="recruit-card contact-card">
+                        <p class="small-text">忘れもの等のお問い合わせはこちらから</p>
+                        <a href="#" class="btn-more">詳細を見る</a>
+                    </div>
+                </div>
+
+                <div class="app-promo-box">
+                    <p>バスの現在地がわかる！</p>
+                    <h4>「伊舟山ナビ」</h4>
+                    <div class="app-btns">
+                        <span class="mock-app-btn"><a href="https://fictional-railway.github.io/Mobile-Misaca"></a>公式サイトから手に入れよう</span>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-links-grid">
+            <div class="footer-info">
+                <h4>伊舟山交通株式会社</h4>
+                <p>〒XXX-XXXX 若狭県兵府市伊舟山1-2-3</p>
+                <p>TEL: 0770-XX-XXXX</p>
+            </div>
+            <div class="footer-nav-bottom">
+                <ul>
+                    <li><a href="#">会社概要</a></li>
+                    <li><a href="#">運送約款</a></li>
+                    <li><a href="#">個人情報保護方針</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <p class="footer-copy">&copy; 2025 Ifunesan Kotsu Co., Ltd.</p>
+        </div>
+    </footer>
+
+    <script src="ifunesan-script.js"></script>
+</body>
+</html>
